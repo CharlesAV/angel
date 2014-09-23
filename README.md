@@ -1,5 +1,5 @@
 Usage:
-
+```js
 {
     "repositories":
     [
@@ -13,3 +13,4 @@ Usage:
         "angel/core": "dev-master"
     }
 }
+```
