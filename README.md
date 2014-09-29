@@ -5,7 +5,7 @@ Usage:
     [
             {
                 "type": "vcs",
-                "url": "https://github.com/AngelVision/angel"
+                "url": "https://github.com/CharlesAV/angel"
             }
     ],
     "require":

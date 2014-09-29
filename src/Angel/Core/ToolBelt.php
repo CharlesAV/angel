@@ -2,18 +2,29 @@
 
 class ToolBelt {
 
-	static function debug($echo)
+	/**
+	 * Echo out a variable in a readable manner.
+	 *
+	 * @param mixed $var - The variable to echo.
+	 */
+	static function debug($var)
 	{
 		echo '<pre>';
-		print_r($echo);
+		print_r($var);
 		echo '</pre>';
 	}
 
+	/**
+	 * Echo out all queries that have been executed thus far.
+	 */
 	static function print_queries()
 	{
 		static::debug(DB::getQueryLog());
 	}
 
+	/**
+	 * Echo out the session.
+	 */
 	static function print_session()
 	{
 		static::debug(Session::all());
@@ -28,7 +39,7 @@ class ToolBelt {
 	 */
 	static function pennies($dollars)
 	{
-		return (int)str_replace('.', '', number_format((float)$dollars, 2, '.', ''));
+		return (int) str_replace('.', '', number_format((float) $dollars, 2, '.', ''));
 	}
 
 	/**
@@ -45,17 +56,14 @@ class ToolBelt {
 	}
 
 	/**
-	 * Test if the MySQL version is greater than a given number.
+	 * Test if the MySQL version is greater than or equal to a given version number.
 	 *
-	 * i.e.:  \ToolBelt::mysql_greater(5, 5, 10);  // Greater than 5.5.10?
-	 *
-	 * @return true/false
+	 * @param string $than - The version number that we're comparing to, i.e. '5.5.12'
+	 * @return boolean
 	 */
-	static function mysql_greater($a, $b, $c)
+	static function mysql_greater($than)
 	{
-		$version = explode('.', static::mysql_version());
-		if ($a <= $version[0] && $b <= $version[1] && $c <= $version[2]) return true;
-		return false;
+		return version_compare(static::mysql_version(), $than, '>=');
 	}
 
 }
