@@ -9,14 +9,31 @@ class UserController extends AngelController {
 		return View::make('core::admin.signin', $this->data);
 	}
 
-	public function signout()
+	public function login()
 	{
-		Auth::logout();
-		return Redirect::to('signin')->with('success', 'You have been signed out.');
+		return View::make('core::login', $this->data);
 	}
 
+	public function signout()
+	{
+		// Redirect
+		$redirect = Input::get('redirect');
+		if(!$redirect) $redirect = 'signin';
+		
+		Auth::logout();
+		return Redirect::to($redirect)->with('success', 'You have been signed out.');
+	}
+	
 	public function attempt_signin()
 	{
+		// URL
+		$url = Input::get('url');
+		if(!$url) $url = "signin";
+		
+		// Redirect
+		$redirect = Input::get('redirect');
+		if(!$redirect) $redirect = admin_uri();
+		
 		Auth::logout();
 
 		$rules = array(
@@ -27,7 +44,7 @@ class UserController extends AngelController {
 		$validator = Validator::make(Input::all(), $rules);
 
 		if ($validator->fails()) {
-			return Redirect::to('signin')->withInput()->withErrors($validator);
+			return Redirect::to($url)->withInput()->withErrors($validator);
 		}
 
 		// Users can use either their username or their email to login, so
@@ -43,10 +60,9 @@ class UserController extends AngelController {
 
 		if (Auth::attempt($usernameCheck, Input::get('remember')) ||
 			Auth::attempt($emailCheck, Input::get('remember'))) {
-			return Redirect::intended(admin_uri());
+			return Redirect::intended($redirect);
 		}
 
-		return Redirect::to('signin')->withInput()->withErrors('Login attempt failed.');
+		return Redirect::to($url)->withInput()->withErrors('Login attempt failed.');
 	}
-
 }

@@ -61,7 +61,8 @@ class CoreServiceProvider extends ServiceProvider {
 			'AdminSettingController'  => '\Angel\Core\AdminSettingController',
 			'AdminUserController'     => '\Angel\Core\AdminUserController',
 			'PageController'          => '\Angel\Core\PageController',
-			'UserController'          => '\Angel\Core\UserController'
+			'UserController'          => '\Angel\Core\UserController',
+			'RemindersController'     => '\Angel\Core\RemindersController'
 		);
 
 		foreach ($bindings as $name=>$class) {

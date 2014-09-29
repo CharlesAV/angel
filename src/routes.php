@@ -206,6 +206,13 @@ Route::get('signout', array(
 	'before' => 'auth',
 	'uses' => 'UserController@signout'
 ));
+Route::get('login', array(
+	'before' => 'guest',
+	'uses' => 'UserController@login'
+));
+Route::group(array('before' => 'guest'), function() {
+	Route::controller('password','RemindersController');
+});
 
 Route::get('/', 'PageController@show');
 
