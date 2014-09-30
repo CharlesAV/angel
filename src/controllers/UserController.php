@@ -18,7 +18,7 @@ class UserController extends AngelController {
 	{
 		// Redirect
 		$redirect = Input::get('redirect');
-		if(!$redirect) $redirect = 'signin';
+		if(!$redirect) $redirect = admin_uri();
 		
 		Auth::logout();
 		return Redirect::to($redirect)->with('success', 'You have been signed out.');
@@ -28,7 +28,7 @@ class UserController extends AngelController {
 	{
 		// URL
 		$url = Input::get('url');
-		if(!$url) $url = "signin";
+		if(!$url) $url = admin_uri();
 		
 		// Redirect
 		$redirect = Input::get('redirect');
