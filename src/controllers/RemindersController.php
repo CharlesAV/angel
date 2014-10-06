@@ -1,6 +1,8 @@
-<?php
+<?php namespace Angel\Core;
 
-class RemindersController extends \Angel\Core\AngelController {
+use View, Password, Input, Config, Redirect, Lang, Hash, Auth;
+
+class RemindersController extends AngelController {
 
 	/**
 	 * Display the password reminder view.
@@ -9,7 +11,7 @@ class RemindersController extends \Angel\Core\AngelController {
 	 */
 	public function getRemind()
 	{
-		return View::make('password.remind',$this->data);
+		return View::make('core::password.remind',$this->data);
 	}
 
 	/**
@@ -19,6 +21,7 @@ class RemindersController extends \Angel\Core\AngelController {
 	 */
 	public function postRemind()
 	{
+		Config::set('auth.reminder.email','core::emails.auth.reminder');
 		$response = Password::remind(Input::only('email'),function($message) {
 			$message->subject('Reset Password');
 		});
@@ -43,7 +46,7 @@ class RemindersController extends \Angel\Core\AngelController {
 		if (is_null($token)) App::abort(404);
 		$this->data['token'] = $token;
 
-		return View::make('password.reset',$this->data);
+		return View::make('core::password.reset',$this->data);
 	}
 
 	/**
@@ -60,7 +63,6 @@ class RemindersController extends \Angel\Core\AngelController {
 		$response = Password::reset($credentials, function($user, $password)
 		{
 			$user->password = Hash::make($password);
-
 			$user->save();
 			Auth::loginUsingId($user->id);
 		});

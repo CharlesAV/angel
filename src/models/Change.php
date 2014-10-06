@@ -6,7 +6,7 @@ class Change extends \Eloquent {
 
 	public static function log($model, $changes)
 	{
-		if (!count($changes)) return;
+		if (!count($changes) or !Auth::check()) return;
 
 		$change = new static;
 		$change->user_id = Auth::user()->id;

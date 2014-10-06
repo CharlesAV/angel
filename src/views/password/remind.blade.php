@@ -7,22 +7,13 @@
 		<div class="content">
 			<div class="row">
 				<div class="medium-12 small-12 columns">
-					<h2>Forgot Password</h2>
+					<h1>Forgot Password</h1>
+					Enter the e-mail you used when signing up and we'll send you instructions on how you can' reset your password!<br /><br />
+					
 					{{ Form::open() }}
-						<table>
-							<tr>
-								<td valign="top">{{ Form::label('email','E-mail') }}</td>
-								<td>
-									<div class="field-wrap">
-										{{ Form::text('email') }}
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td valign="top"></td>
-								<td><input type="submit" value="Submit"></td>
-							</tr>
-						</table>
+						{{ Form::label('email','E-mail') }}</td>
+						{{ Form::text('email', null, array('class'=>'form-control')) }}
+						<input type="submit" value="Submit" class="btn btn-primary button" />
 						{{ Form::hidden('url',Request::url()) }}
 						{{ Form::hidden('redirect',(Input::get('redirect') ? Input::get('redirect') : "/")) }}
 					{{ Form::close() }}

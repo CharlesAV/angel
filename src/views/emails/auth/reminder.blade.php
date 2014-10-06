@@ -1,4 +1,4 @@
-@extends('emails.template')
+@extends('core::emails.template')
 @section('content')
 Someone hsa requested to reset your password. To do so, please visit the link below:<br /><br />
 

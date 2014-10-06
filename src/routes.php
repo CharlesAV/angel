@@ -199,13 +199,30 @@ Route::group(array('prefix' => Config::get('core::admin_prefix'), 'before' => 'a
 ///////////////////////////////////////////////
 //                Front End                  //
 ///////////////////////////////////////////////
+Route::get('register', array(
+	'before' => 'guest',
+	'uses' => 'UserController@register'
+));
+Route::post('register', array(
+	'before' => 'guest',
+	'uses' => 'UserController@attempt_register'
+));
 Route::get('login', array(
 	'before' => 'guest',
 	'uses' => 'UserController@login'
 ));
-Route::group(array('before' => 'guest'), function() {
+Route::post('login', array(
+	'before' => 'guest',
+	'uses' => 'UserController@attempt_signin'
+));
+Route::get('logout','UserController@signout');
+Route::get('password/remind','RemindersController@getRemind');
+Route::post('password/remind','RemindersController@postRemind');
+Route::get('password/reset/{token}','RemindersController@getReset');
+Route::post('password/reset','RemindersController@postReset');
+/*Route::group(array('before' => 'guest'), function() { // Would be nice to use this, but the RemindersController binding (in CoreServiceProvider.php) isn't happening before this get's set/checked, so just using individual routes (above) for now
 	Route::controller('password','RemindersController');
-});
+});*/
 
 Route::get('/', 'PageController@show');
 
