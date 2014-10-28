@@ -35,6 +35,7 @@
 </div><!-- #masterContainer -->
 {{ HTML::script('packages/angel/core/js/jquery/jquery.min.js') }}
 {{ HTML::script('packages/angel/core/js/jquery/fancybox/jquery.fancybox.pack.js') }}
+{{ HTML::script('packages/angel/core/js/jquery/jquery.metadata.js') }}
 {{ HTML::script('packages/angel/core/bootstrap/bootstrap.min.js') }}
 <script>
 	var config = {
