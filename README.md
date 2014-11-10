@@ -3,20 +3,21 @@ Usage:
 {
     "repositories":
     [
-            {
-                "type": "vcs",
-                "url": "https://github.com/CharlesAV/angel"
-            }
+        {
+            "type": "vcs",
+            "url": "https://github.com/CharlesAV/angel"
+        }
     ],
     "require":
     {
+        "laravel/framework": "4.1.*",
         "angel/core": "dev-master"
-    }
+    },
 }
 ```
 
 # Installation
-Largely, we'll ofllow the instructions on https://github.com/JVMartin/angel, but here are a few additions I found useful.
+Largely, we'll follow the instructions on https://github.com/JVMartin/angel, but here are a few additions I found useful.
 
 ## Config
 
