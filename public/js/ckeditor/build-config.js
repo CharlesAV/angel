@@ -13,10 +13,10 @@
  * (1) http://ckeditor.com/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) http://ckeditor.com/builder/158f69b825d139ad36070a8ccc1e1fcf
+ * (2) http://ckeditor.com/builder/dd860a819e6db193d133f2f53a9f47a4
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) http://ckeditor.com/builder/download/158f69b825d139ad36070a8ccc1e1fcf
+ * (3) http://ckeditor.com/builder/download/dd860a819e6db193d133f2f53a9f47a4
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -26,7 +26,7 @@
 
 var CKBUILDER_CONFIG = {
 	skin: 'moono',
-	preset: 'basic',
+	preset: 'standard',
 	ignore: [
 		'.bender',
 		'bender.js',
@@ -48,10 +48,15 @@ var CKBUILDER_CONFIG = {
 		'tests'
 	],
 	plugins : {
+		'a11yhelp' : 1,
 		'about' : 1,
 		'basicstyles' : 1,
+		'blockquote' : 1,
 		'clipboard' : 1,
 		'colorbutton' : 1,
+		'contextmenu' : 1,
+		'dialogadvtab' : 1,
+		'elementspath' : 1,
 		'enterkey' : 1,
 		'entities' : 1,
 		'filebrowser' : 1,
@@ -59,19 +64,34 @@ var CKBUILDER_CONFIG = {
 		'font' : 1,
 		'format' : 1,
 		'horizontalrule' : 1,
+		'htmlwriter' : 1,
+		'iframe' : 1,
 		'image' : 1,
 		'imagebrowser' : 1,
+		'imgbrowse' : 1,
 		'indentblock' : 1,
 		'indentlist' : 1,
 		'justify' : 1,
 		'link' : 1,
 		'list' : 1,
+		'magicline' : 1,
+		'maximize' : 1,
+		'mediaembed' : 1,
+		'pastefromword' : 1,
+		'pastetext' : 1,
 		'removeformat' : 1,
+		'resize' : 1,
+		'scayt' : 1,
+		'showborders' : 1,
 		'sourcearea' : 1,
 		'specialchar' : 1,
+		'stylescombo' : 1,
+		'tab' : 1,
 		'table' : 1,
+		'tabletools' : 1,
 		'toolbar' : 1,
 		'undo' : 1,
+		'wsc' : 1,
 		'wysiwygarea' : 1
 	},
 	languages : {
