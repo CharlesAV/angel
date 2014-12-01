@@ -1,4 +1,8 @@
-Usage:
+# Installation
+Largely, we'll follow the instructions on https://github.com/JVMartin/angel, but here are a few additions I found useful.
+
+First, we muts make sure to include a 'repositories' array to define that we're getting the package from a fork:
+
 ```js
 {
     "repositories":
@@ -16,8 +20,7 @@ Usage:
 }
 ```
 
-# Installation
-Largely, we'll follow the instructions on https://github.com/JVMartin/angel, but here are a few additions I found useful.
+Note: make sure you're calling "dev-master". Using 1.0.* doesn't work.
 
 ## Config
 
