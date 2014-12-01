@@ -95,5 +95,41 @@ class AngelController extends \BaseController {
 
 		return $results;
 	}
+	
+	function file_upload($file,$path) {
+		if(!$file or !$path) return;
+		
+		// Path
+		$path_public = public_path();
+		$path = str_replace($path_public,'',$path);
+		if(substr($path,0,1) != "/") $path = "/".$path;
+		if(substr($path,-1) != "/") $path .= "/";
+		
+		// Extension
+		$extension = $file->getClientOriginalExtension();
+		
+		// Name
+		$name = $file->getClientOriginalName();
+		$name_base = basename($name ,".".$extension);
+		
+		// Exists?
+		$x = 0;
+		while(file_exists($path_public.$path.$name)) {
+			$name = $name_base.'_'.$x.'.'.$extension;
+			$x++;
+		}
+		
+		// Move
+		try {
+			$file->move($path_public.$path,$name);
+		}
+		catch(Exception $e) {
+			//print "error uploading file: ".$e->getMessage()."<br />";
+			//exit;
+		}
+		
+		// Return
+		return $path.$name;
+	}
 
 }
