@@ -19,6 +19,7 @@ class CreateMenusItemsTable extends Migration {
 			$table->integer('order')->unsigned();
 			$table->integer('menu_id')->unsigned();
 			$table->integer('child_menu_id')->unsigned()->nullable();
+			$table->string('name');
 			$table->string('fmodel');
 			$table->integer('fid')->unsigned();
 			$table->timestamps(); // Adds `created_at` and `updated_at` columns

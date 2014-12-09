@@ -12,6 +12,16 @@
 					<tbody>
 						<tr>
 							<td>
+								{{ Form::label('name', 'Name') }}
+							</td>
+							<td>
+								<div style="width:300px">
+									{{ Form::text('name', null, array('class' => 'form-control', 'autocomplete'=>'off', 'placeholder' => $item->model()->name)) }}
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
 								{{ Form::label('child_menu_id', 'Child Menu') }}
 							</td>
 							<td>
